@@ -11,14 +11,6 @@ public class A1Novice {
 
 
 	public static void main(String[] args) {
-		System.out.println("***** Scanner a1/jrbatch Novice*****");
-		System.out.println("Java version: " + System.getProperty("java.version"));
-		System.out.println("Onyen: jrbatch");
-		System.out.println("Justin Batchelor");
-		System.out.println("08/26/2019 ");
-		System.out.println("COMP 401.001.FA19");
-		System.out.println();
-		System.out.println("Please enter your list:");
 
 		// Your code follows here.
 		int loopVariable;
