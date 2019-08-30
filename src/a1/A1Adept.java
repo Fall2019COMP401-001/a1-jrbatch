@@ -41,11 +41,9 @@ public class A1Adept {
     public static void main(String[] args) {
 
 
-
         Scanner scan = new Scanner(System.in);
         ItemList mainList = new ItemList();
         FinalPrintObject finalResults = new FinalPrintObject();
-
 
 
         // Your code follows here.
@@ -100,21 +98,23 @@ public class A1Adept {
             // will be formatted.  once this loop is complete set up a hash map so that way I can
             // reference the ItemList later
             for (x = 0; x < conditionalCheck2; x++) {
-                    int itemQuantity = scan.nextInt();
-                    String itemDescription = scan.next();
-                    if (customers[loopVariable].shoppingCartList.containsKey(itemDescription)){
-                            int quantity = customers[loopVariable].shoppingCartList.get(itemDescription) + itemQuantity;
-                            customers[loopVariable].shoppingCartList.put(itemDescription, quantity);
-                            Set<Map.Entry<String, Integer>> set = customers[loopVariable].shoppingCartList.entrySet();
-                    } else {
-                            customers[loopVariable].quantityOfItem[x] = itemQuantity;
-                            customers[loopVariable].itemDescription[x] = itemDescription;
-                            customers[loopVariable].shoppingCartList.put(itemDescription, itemQuantity);
-                            Set<Map.Entry<String, Integer>> set = customers[loopVariable].shoppingCartList.entrySet();
-                    }
+                int itemQuantity = scan.nextInt();
+                String itemDescription = scan.next();
+                if (customers[loopVariable].shoppingCartList.containsKey(itemDescription)) {
+                    int quantity = customers[loopVariable].shoppingCartList.get(itemDescription) + itemQuantity;
+                    customers[loopVariable].itemDescription[x] = itemDescription;
+                    customers[loopVariable].shoppingCartList.put(itemDescription, quantity);
+                    Set<Map.Entry<String, Integer>> set = customers[loopVariable].shoppingCartList.entrySet();
+                } else {
+                    customers[loopVariable].quantityOfItem[x] = itemQuantity;
+                    customers[loopVariable].itemDescription[x] = itemDescription;
+                    customers[loopVariable].shoppingCartList.put(itemDescription, itemQuantity);
+                    Set<Map.Entry<String, Integer>> set = customers[loopVariable].shoppingCartList.entrySet();
+                }
 
             }
         }
+
 
 
         // Now we have all the data saved
@@ -123,7 +123,7 @@ public class A1Adept {
         // each index contains an individual customer that inherits from the Customer Class
         // and now all we need to do is figure out how to calculate the min max and average
 
-        for (loopVariable = 0; loopVariable < customers.length; loopVariable++) {
+        for (loopVariable = 0; loopVariable<customers.length; loopVariable++) {
             int x;
             customers[loopVariable].comparisonMoneySpent = new double[customers[loopVariable].shoppingCartNumber];
             for (x = 0; x < customers[loopVariable].shoppingCartList.size(); x++) {
@@ -146,7 +146,7 @@ public class A1Adept {
             }
         }
 
-        double currentMaxValue = customers[0].actualTotalSpent;
+        double currentMaxValue = 0;
         // getting max value and customer info
         for (loopVariable = 0; loopVariable < customers.length; loopVariable++) {
             if (customers[loopVariable].actualTotalSpent > currentMaxValue) {
@@ -159,9 +159,9 @@ public class A1Adept {
             }
         }
 
-        double currentMinValue = customers[0].actualTotalSpent;
+        double currentMinValue = 1000000;
         // getting lowest customer info
-        for (loopVariable = 0; loopVariable < customers.length; loopVariable++) {
+        for (loopVariable = 0; loopVariable<customers.length; loopVariable++) {
             if (customers[loopVariable].actualTotalSpent < currentMinValue) {
                 currentMinValue = customers[loopVariable].actualTotalSpent;
                 String format = String.format("%.2f", currentMinValue);
@@ -172,15 +172,21 @@ public class A1Adept {
             }
         }
         // creating the average for each customer
-        for (loopVariable = 0; loopVariable < customers.length; loopVariable++) {
-            double customerAverage = customers[loopVariable].actualTotalSpent;
-            finalResults.average += customerAverage;
+
+        for (loopVariable = 0; loopVariable < 1; loopVariable++) {
+            double runningTotal = 0;
+            int customerCount = 0;
+            int x;
+            for(x=0; x<customers.length; x++){
+                double total = customers[x].actualTotalSpent;
+                runningTotal += total;
+                customerCount += 1;
+            }
+            finalResults.average = (runningTotal / customerCount);
+            String formattedAverage = String.format("%.2f", finalResults.average);
+            finalResults.averagePrint = formattedAverage;
         }
         scan.close();
-
-        finalResults.average = finalResults.average / customers.length;
-        String formattedAverage = String.format("%.2f", finalResults.average);
-        finalResults.averagePrint = formattedAverage;
 
         System.out.println("Biggest: " + finalResults.biggestSpender + " (" + finalResults.biggestSpenderAmount + ")");
         System.out.println("Smallest: " + finalResults.lowerstSpender + " (" + finalResults.lowestSpenderAmount + ")");

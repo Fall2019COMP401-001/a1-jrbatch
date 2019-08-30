@@ -12,14 +12,10 @@ public class A1Jedi {
 
 	public static void main(String[] args) {
 
-
-
 		Scanner scan = new Scanner(System.in);
 		ItemList mainList = new ItemList();
 		FinalPrintObject finalResults = new FinalPrintObject();
 		FinalJediObject finalJedi = new FinalJediObject();
-
-
 
 		// Your code follows here.
 
@@ -75,10 +71,10 @@ public class A1Jedi {
 			for (x = 0; x < conditionalCheck2; x++) {
 				int itemQuantity = scan.nextInt();
 				String itemDescription = scan.next();
-
 				// Creating a check so I can remove any duplicates and then update the list
 				if (customers[loopVariable].shoppingCartList.containsKey(itemDescription)){
 					int quantity = customers[loopVariable].shoppingCartList.get(itemDescription) + itemQuantity;
+					customers[loopVariable].itemDescription[x] = itemDescription;
 					customers[loopVariable].shoppingCartList.put(itemDescription, quantity);
 					Set<Map.Entry<String, Integer>> set = customers[loopVariable].shoppingCartList.entrySet();
 				} else {
@@ -122,7 +118,7 @@ public class A1Jedi {
 			}
 		}
 
-		double currentMaxValue = customers[0].actualTotalSpent;
+		double currentMaxValue = 100000000;
 		// getting max value and customer info
 		for (loopVariable = 0; loopVariable < customers.length; loopVariable++) {
 			if (customers[loopVariable].actualTotalSpent > currentMaxValue) {
@@ -135,7 +131,7 @@ public class A1Jedi {
 			}
 		}
 
-		double currentMinValue = customers[0].actualTotalSpent;
+		double currentMinValue = 0;
 
 		// getting lowest customer info
 		for (loopVariable = 0; loopVariable < customers.length; loopVariable++) {
