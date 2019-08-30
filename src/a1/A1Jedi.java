@@ -180,7 +180,6 @@ public class A1Jedi {
 			finalJedi.customersList.put(description, runningTotal);
 			finalJedi.numberOfCustomers[loopVariable] = runningCustomerCount;
 			Set<Map.Entry<String, Integer>> set = finalJedi.customersList.entrySet();
-			System.out.println(finalJedi.numberOfCustomers[loopVariable]);
 
 			// this should work because we are parsing back through the data we saved in the same order
 		}

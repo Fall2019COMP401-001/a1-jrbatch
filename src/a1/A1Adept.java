@@ -179,12 +179,17 @@ public class A1Adept {
             int x;
             for(x=0; x<customers.length; x++){
                 double total = customers[x].actualTotalSpent;
-                runningTotal += total;
+                customers[x].averageSpent = total;
+            }
+            for (x=0; x<customers.length; x++){
+                double customerAverage = customers[x].averageSpent;
+                runningTotal += customerAverage;
                 customerCount += 1;
             }
             finalResults.average = (runningTotal / customerCount);
             String formattedAverage = String.format("%.2f", finalResults.average);
             finalResults.averagePrint = formattedAverage;
+
         }
         scan.close();
 
