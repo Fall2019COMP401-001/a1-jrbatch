@@ -183,7 +183,7 @@ public class A1Adept {
         finalResults.averagePrint = formattedAverage;
 
         System.out.println("Biggest: " + finalResults.biggestSpender + " (" + finalResults.biggestSpenderAmount + ")");
-        System.out.println("Lowest: " + finalResults.lowerstSpender + " (" + finalResults.lowestSpenderAmount + ")");
+        System.out.println("Smallest: " + finalResults.lowerstSpender + " (" + finalResults.lowestSpenderAmount + ")");
         System.out.println("Average: " + finalResults.averagePrint);
 
     }
