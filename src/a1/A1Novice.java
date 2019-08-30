@@ -2,26 +2,11 @@ package a1;
 
 import java.util.Scanner;
 
-//class Person {
-//    String firstName;
-//    String lastName;
-//
-//    int numberOfItemsInList;
-//
-//    int[] quantityOfItem;
-//    String[] itemDescription;
-//    double[] itemPrice;
-//
-//    double totalSpent;
-//    String totalSpentPrint;
-//    static double calculateTotalSpent(int amount, double price) {
-//        double total = amount * price;
-//        return total;
-//    }
-//
-//}
+
 
 public class A1Novice {
+
+
 
 
 
